@@ -1,0 +1,25 @@
+{
+  "name": "advent-of-code",
+  "version": "0.0.1",
+  "description": "Advent of Code 2021",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Paul Lemon",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.5"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "modulePaths": [
+      "<rootDir>/src"
+    ]
+  }
+}
