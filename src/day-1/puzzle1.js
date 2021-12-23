@@ -34,7 +34,8 @@ module.exports = (()=>{
             }
             return {
                 result:result,
-                linesCompared: linesCompared
+                linesCompared: linesCompared,
+                puzzleName: "Puzzle 1"
             }
         }
 

@@ -4,7 +4,8 @@ const Puzzle1 = require('day-1/puzzle1.js');
 test("result is non zero",()=>{
     let result = Puzzle1.doPuzzle();
     expect(result.result).not.toBe(0);
-    expect(result.linesProcessed).not.toBe(1999);
+    expect(result.linesCompared).toBe(1999);
+    expect(result.puzzleName).toBe("Puzzle 1");
     console.table(result);
 });
 
