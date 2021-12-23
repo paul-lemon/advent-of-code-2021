@@ -31,20 +31,38 @@ module.exports = (()=>{
             return result;
         }
 
-        static findMostPopularBitsFromBitArrays(bitArrays) {
-            const initialArray = Array(bitArrays[0].length).fill(0);
-            const bitTotals = bitArrays.reduce((previous, current)=>{
-                return previous.map(function (num, idx) {
-                    return num + current[idx];
-                }); 
-            },initialArray);
-            const arraylength = bitArrays.length;
-            const threshold = Math.floor(arraylength/2);
+        static filterArrayByThresholdToBitArray(bitTotals,threshold) {
             let result = [];
             bitTotals.forEach((count)=>{
                 result.push((count>threshold)?1:0);
             });
             return result;
+        }
+
+        static findMostPopularBitsFromBitArrays(bitArrays,defaultToOne) {
+            if (defaultToOne == undefined) {
+                defaultToOne = true;
+            }
+            let bitTotals = BinaryDataHelper.totaliseBitArrays(bitArrays);
+            let result = [];
+            let threshold = Math.floor(bitArrays.length/2);
+            if (defaultToOne && threshold == bitArrays.length/2) {
+                threshold = threshold-1;
+            }
+            return BinaryDataHelper.filterArrayByThresholdToBitArray(bitTotals,threshold);
+        }
+
+        static totaliseBitArrays(bitArrays) {
+            const initialArray = Array(bitArrays[0].length).fill(0);
+           return bitArrays.reduce((previous, current)=>{
+                return previous.map(function (num, idx) {
+                    return num + current[idx];
+                }); 
+            },initialArray);
+        }
+
+        static findLeastPopularBitsFromBitArrays(bitArrays) {
+            
         }
 
 
@@ -59,6 +77,34 @@ module.exports = (()=>{
                 result.push(bit==1?0:1);
             })
         return result;
+    }
+
+    static filterBitArrayByPosition(arrayOfBitArrays, filterValue, indexToFilter) {
+        if (!Array.isArray(arrayOfBitArrays)) {
+            throw "invalid array";
+        }
+        if (arrayOfBitArrays.length == 0) {
+            throw "invalid array";
+        }
+        if (!Array.isArray(arrayOfBitArrays[0])) {
+            throw "invalid array";
+        }
+        if (arrayOfBitArrays[0].length == 0) {
+            throw "invalid array";
+        }
+        let bitArrayLength = arrayOfBitArrays[0].length;
+        if (indexToFilter<0 || indexToFilter>=bitArrayLength) {
+            throw "invalid index";
+        }
+
+        if (Number.isNaN(filterValue) || filterValue < 0 || filterValue > 1) {
+            throw "value must be one or zero";
+        }
+        const result =  arrayOfBitArrays.filter((bitArray)=>{
+            return bitArray[indexToFilter] == filterValue;
+        });
+        return result;
+
     }
 }
     return BinaryDataHelper;

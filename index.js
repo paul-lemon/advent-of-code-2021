@@ -12,3 +12,6 @@ console.table(Puzzle4.doPuzzle());
 
 const Puzzle5 = require('./src/puzzle5');
 console.table(Puzzle5.doPuzzle());
+
+const Puzzle6 = require('./src/puzzle6');
+console.table(Puzzle6.doPuzzle());
