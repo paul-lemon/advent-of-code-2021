@@ -1,4 +1,3 @@
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 
 module.exports = (()=>{
     class Puzzle1 {
@@ -14,7 +13,7 @@ module.exports = (()=>{
         loadData() {
             this.data = [];
             var fs = require('fs');
-            let textLineArray = fs.readFileSync('puzzle-input-data/day-1/data.txt').toString().split("\n");
+            let textLineArray = fs.readFileSync('puzzle-input-data/day-1.txt').toString().split("\n");
             textLineArray.forEach((textLine)=>{
                 this.data.push(parseInt(textLine));
             });

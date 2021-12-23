@@ -1,13 +1,13 @@
 
-const Puzzle1 = require('day-1/puzzle1.js');
+const Puzzle1 = require('puzzle1.js');
 
-test("result is non zero",()=>{
+test("result",()=>{
     let result = Puzzle1.doPuzzle();
-    expect(result.result).not.toBe(0);
+    expect(result.result).toBe(1521);
     expect(result.linesCompared).toBe(1999);
     expect(result.puzzleName).toBe("Puzzle 1");
-    console.table(result);
 });
+
 
 test('load data',()=>{
     let puzzle = new Puzzle1();
