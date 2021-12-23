@@ -3,9 +3,10 @@ const Puzzle1 = require('puzzle1.js');
 
 test("result",()=>{
     let result = Puzzle1.doPuzzle();
-    expect(result.result).toBe(1521);
     expect(result.linesCompared).toBe(1999);
+    expect(result.result).toBe(1521);
     expect(result.puzzleName).toBe("Puzzle 1");
+    expect(result.day).toBe("Day 1");
 });
 
 

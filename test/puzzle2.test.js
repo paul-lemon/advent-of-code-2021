@@ -3,6 +3,7 @@ const Puzzle2 = require('puzzle2.js');
 test("result",()=>{
     let result = Puzzle2.doPuzzle();
     expect(result.puzzleName).toBe("Puzzle 2");
+    expect(result.day).toBe("Day 1");
     expect(result.result).not.toBe(1521);
     expect(result.windowsCompared).toBe(1998);
 });

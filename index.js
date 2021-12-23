@@ -3,3 +3,6 @@ console.table(Puzzle1.doPuzzle());
 
 const Puzzle2 = require('./src/puzzle2');
 console.table(Puzzle2.doPuzzle());
+
+const Puzzle3 = require('./src/puzzle3');
+console.table(Puzzle3.doPuzzle());

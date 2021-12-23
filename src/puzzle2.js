@@ -1,5 +1,5 @@
 
-const Puzzle1 = require('./puzzle1');
+const readPuzzleInputData = require('./lib/read-puzzle-input-data');
 
 module.exports = (()=>{
     class Puzzle2 {
@@ -9,8 +9,7 @@ module.exports = (()=>{
         }
 
         constructor() {
-            const puzzle1 = new Puzzle1();
-            this.data = puzzle1.data;
+            this.data = readPuzzleInputData(1,true);
             this.buildWindows();
         }
 
@@ -37,7 +36,8 @@ module.exports = (()=>{
             return {
                 result:result,
                 windowsCompared: linesCompared,
-                puzzleName: "Puzzle 2"
+                puzzleName: "Puzzle 2",
+                day: "Day 1"
             }
         }
 

@@ -1,4 +1,6 @@
 
+const readPuzzleInputData = require('./lib/read-puzzle-input-data');
+
 module.exports = (()=>{
     class Puzzle1 {
         static doPuzzle() {
@@ -11,12 +13,7 @@ module.exports = (()=>{
         }
 
         loadData() {
-            this.data = [];
-            var fs = require('fs');
-            let textLineArray = fs.readFileSync('puzzle-input-data/day-1.txt').toString().split("\n");
-            textLineArray.forEach((textLine)=>{
-                this.data.push(parseInt(textLine));
-            });
+            this.data = readPuzzleInputData(1,true);
         }
 
         getResult() {
@@ -34,7 +31,8 @@ module.exports = (()=>{
             return {
                 result:result,
                 linesCompared: linesCompared,
-                puzzleName: "Puzzle 1"
+                puzzleName: "Puzzle 1",
+                day: "Day 1"
             }
         }
 
