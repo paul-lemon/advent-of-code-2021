@@ -58,30 +58,48 @@ module.exports = (() => {
             this.grid = Puzzle9.buildEmptyGrid(this.vectors);
         }
 
-        drawAllVectors() {
-            this.vectors.forEach((vector)=>{this.drawVector(vector)});
+        drawAllVectors(drawDiagonals) {
+            if (drawDiagonals == null) {
+                drawDiagonals = false;
+            }
+            this.vectors.forEach((vector)=>{this.drawVector(vector,drawDiagonals)});
         }
 
-        drawVector(vector) {
+        drawVector(vector,drawDiagonals) {
+            if (drawDiagonals == null) {
+                drawDiagonals = false;
+            }
             let startY = Math.min(vector.y1,vector.y2);
             let endY = Math.max(vector.y1,vector.y2);
             let startX = Math.min(vector.x1,vector.x2);
             let endX = Math.max(vector.x1,vector.x2);
-            if (startX == endX) {
-                for (let y=startY;y<=endY;y++) {
-                    this.grid[y][startX]++;
-                    if (this.grid[y][startX]==2) {
-                        this.totalOverlappintPoints++;
-                    }
+            let xDiff = vector.x2 - vector.x1;
+            let yDiff = vector.y2 - vector.y1;
+            
+            const setGridPoint = (x,y) =>{
+                this.grid[y][x]++;
+                if (this.grid[y][x]==2) {
+                    this.totalOverlappintPoints++;
                 }
-            } else  if (startY == endY) {
+            }
+            if (xDiff==0) {
+                for (let y=startY;y<=endY;y++) {
+                    setGridPoint(startX,y);
+                }
+            } else  if (yDiff==0) {
                 for (let x=startX;x<=endX;x++) {
-                    this.grid[startY][x]++;
-                    if (this.grid[startY][x]==2) {
-                        this.totalOverlappintPoints++;
-                    }
+                    setGridPoint(x,startY);
                 }
 
+            } else if (drawDiagonals) {
+                let y = vector.y1;
+                let x = vector.x1;
+                let length = Math.abs(xDiff);
+                for (let i=0;i<=length;i++) {
+                    setGridPoint(x,y);
+                    x += (xDiff>0)?1:-1;
+                    y += (yDiff>0)?1:-1;
+                }
             }
         }
 

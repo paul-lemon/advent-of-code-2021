@@ -103,36 +103,58 @@ test('draw line',()=>{
     expect(puzzle9.vectors.length).toBe(10);
     expect(puzzle9.grid.length).toBe(10);
     puzzle9.drawVector({x1:0,y1:0,x2:0,y2:9});
+    expect(puzzle9.totalOverlappintPoints).toBe(0);
+    puzzle9.drawVector({x1:0,y1:0,x2:0,y2:9});
+    expect(puzzle9.totalOverlappintPoints).toBe(10);
+    puzzle9.drawVector({x1:0,y1:0,x2:0,y2:9});
+    expect(puzzle9.totalOverlappintPoints).toBe(10);
 
     // check all values are zero
     let sum = sumGrid(grid);
-    expect(sum).toBe(10);
+    expect(sum).toBe(30);
     for (let i=0;i<grid.length;i++) {
-        expect(grid[i][0]).toBe(1);
+        expect(grid[i][0]).toBe(3);
     }
     puzzle9.drawVector({x1:0,y1:2,x2:9,y2:2});
     sum = sumGrid(grid);
-    expect(sum).toBe(20);
-    expect(grid[2][0]).toBe(2);
+    expect(sum).toBe(40);
+    expect(grid[2][0]).toBe(4);
     for (let i=1;i<grid[2].length;i++) {
         expect(grid[2][i]).toBe(1);
     };
-    expect(puzzle9.totalOverlappintPoints).toBe(1);
+    expect(puzzle9.totalOverlappintPoints).toBe(10);
     puzzle9.drawVector({x1:4,y1:3,x2:0,y2:3});
     sum = sumGrid(grid);
-    expect(sum).toBe(25);
-    expect(grid[3][0]).toBe(2);
+    expect(sum).toBe(45);
+    expect(grid[3][0]).toBe(4);
     expect(grid[3][4]).toBe(1);
     expect(grid[3][5]).toBe(0);
 
 
     puzzle9.drawVector({x1:2,y1:4,x2:2,y2:0});
     sum = sumGrid(grid);
-    expect(sum).toBe(30);
+    expect(sum).toBe(50);
+
+
+    puzzle9.drawVector({x1:0,y1:0,x2:9,y2:9},true);
+    sum = sumGrid(grid);
+    expect(sum).toBe(60);
+
+
+    expect(grid[2][7]).toBe(1);
+    puzzle9.drawVector({x1:9,y1:0,x2:7,y2:2},true);
+    expect(grid[0][9]).toBe(1);
+    expect(grid[1][8]).toBe(1);
+    expect(grid[2][7]).toBe(2);
     
 });
 test('execute Puzzle and check result',()=>{
     let puzzle9 = new Puzzle9(true);
     puzzle9.drawAllVectors();
     expect(puzzle9.totalOverlappintPoints).toBe(5);
+    // now do it with diagonal line drawing for the second half of the puzzle
+    puzzle9 = new Puzzle9(true);
+    puzzle9.drawAllVectors(true);
+    expect(puzzle9.totalOverlappintPoints).toBe(12);
+
 });
