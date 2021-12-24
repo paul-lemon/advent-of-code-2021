@@ -89,9 +89,6 @@ module.exports = (()=>{
         if (!Array.isArray(arrayOfBitArrays[0])) {
             throw "invalid array";
         }
-        if (arrayOfBitArrays[0].length == 0) {
-            throw "invalid array";
-        }
         let bitArrayLength = arrayOfBitArrays[0].length;
         if (indexToFilter<0 || indexToFilter>=bitArrayLength) {
             throw "invalid index";
