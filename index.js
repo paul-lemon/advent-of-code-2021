@@ -30,3 +30,5 @@ console.table(Puzzle10.doPuzzle());
 
 const Puzzle11 = require('./src/puzzle11');
 console.table(Puzzle11.doPuzzle());
+
+console.table(Puzzle11.doPuzzle12());

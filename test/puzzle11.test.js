@@ -6,6 +6,14 @@ test('doPuzzle', () => {
     expect(result.day).toBe("Day 6");
     expect(isNaN(result.totalFish)).toBe(false);
     expect(result.totalFish).toBe(351092);
+});
+
+test('doPuzzle12', () => {
+    const result = Puzzle11.doPuzzle12();
+    expect(result.puzzleName).toBe("Puzzle 12");
+    expect(result.day).toBe("Day 6");
+    expect(isNaN(result.totalFish)).toBe(false);
+    expect(result.totalFish).toBe(1595330616005);
 })
 
 test('load and parse data',()=>{
@@ -85,5 +93,9 @@ test('test data',()=>{
     puzzle11 = new Puzzle11(true);
     puzzle11.doBreedCycle(80);
     expect(puzzle11.totalFish).toBe(5934);
+
+    puzzle11 = new Puzzle11(true);
+    puzzle11.doBreedCycle(256);
+    expect(puzzle11.totalFish).toBe(26984457539);
 
 });

@@ -12,6 +12,16 @@ module.exports = (() => {
                 day: "Day 6"
             }
         }
+
+        static doPuzzle12() {
+            let puzzle11 = new Puzzle11(false);
+            puzzle11.doBreedCycle(256);
+            return {
+                totalFish: puzzle11.totalFish,
+                puzzleName: "Puzzle 12",
+                day: "Day 6"
+            }
+        }
         
 
         constructor(useTestData) {
