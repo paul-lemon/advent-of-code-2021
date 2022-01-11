@@ -46,7 +46,7 @@ module.exports = (() => {
                 }
             )
             let grid = [];
-            for (let i=0;i<=maxX;i++) {
+            for (let i=0;i<=maxY;i++) {
                 grid.push(Array(maxX+1).fill(0));
             }
             return grid;
